@@ -42,6 +42,8 @@ scrolling, coin/life counters, restart, game-over, and clear states.
 
 - Keep the project dependency-free and preserve the three-file browser structure unless a
   change explicitly requires otherwise.
+- Explanations, implementation summaries, and user-facing guidance should be written in
+  Japanese. Keep code identifiers and standard technical terms in their conventional form.
 - Use the existing plain JavaScript style: DOM elements are captured once at startup,
   mutable session data lives under `game`, and static level data stays outside the loop.
 - Add keyboard actions to the `keys` set and mirror them in the mobile controls through
