@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私立教員募集ノート（東京・神奈川）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>私立教員募集ノート</h1>
+    <p class="lead">東京都・神奈川県の私立中学・高校の教員募集を、探して・記録して・締切順に確認するためのアプリです。</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>1. 条件を選ぶ</h2>
+      <div class="filters">
+        <label>都県
+          <select id="f-pref">
+            <option value="">すべて</option>
+            <option>東京都</option>
+            <option>神奈川県</option>
+          </select>
+        </label>
+        <label>校種
+          <select id="f-level">
+            <option value="">すべて</option>
+            <option>中学校</option>
+            <option>高等学校</option>
+            <option>中高一貫</option>
+            <option>小学校</option>
+          </select>
+        </label>
+        <label>教科
+          <select id="f-subject">
+            <option value="">すべて</option>
+            <option>国語</option>
+            <option>数学</option>
+            <option>英語</option>
+            <option>理科</option>
+            <option>社会</option>
+            <option>保健体育</option>
+            <option>音楽</option>
+            <option>美術</option>
+            <option>家庭</option>
+            <option>情報</option>
+            <option>宗教</option>
+            <option>その他</option>
+          </select>
+        </label>
+        <label>雇用形態
+          <select id="f-type">
+            <option value="">すべて</option>
+            <option>専任教諭</option>
+            <option>常勤講師</option>
+            <option>非常勤講師</option>
+          </select>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="f-open" checked> 締切前のみ表示
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>2. 募集を探す</h2>
+      <p class="note">選んだ条件で検索ページを開きます。掲載内容は各サイトで必ず最新のものを確認してください。</p>
+      <div id="search-links" class="link-grid"></div>
+      <h3>定番の情報源</h3>
+      <div id="source-links" class="link-grid"></div>
+    </section>
+
+    <section class="panel">
+      <h2>3. 見つけた募集を記録する</h2>
+      <form id="job-form" class="job-form">
+        <input type="hidden" id="j-id">
+        <label class="wide">学校名 <input id="j-school" required placeholder="例：○○学園中学校・高等学校"></label>
+        <label>都県
+          <select id="j-pref" required>
+            <option>東京都</option>
+            <option>神奈川県</option>
+          </select>
+        </label>
+        <label>市区町村 <input id="j-city" placeholder="例：横浜市"></label>
+        <label>校種
+          <select id="j-level">
+            <option>中高一貫</option>
+            <option>中学校</option>
+            <option>高等学校</option>
+            <option>小学校</option>
+          </select>
+        </label>
+        <label>教科
+          <select id="j-subject">
+            <option>国語</option>
+            <option>数学</option>
+            <option>英語</option>
+            <option>理科</option>
+            <option>社会</option>
+            <option>保健体育</option>
+            <option>音楽</option>
+            <option>美術</option>
+            <option>家庭</option>
+            <option>情報</option>
+            <option>宗教</option>
+            <option>その他</option>
+          </select>
+        </label>
+        <label>雇用形態
+          <select id="j-type">
+            <option>専任教諭</option>
+            <option>常勤講師</option>
+            <option>非常勤講師</option>
+          </select>
+        </label>
+        <label>応募締切 <input type="date" id="j-deadline"></label>
+        <label>状況
+          <select id="j-status">
+            <option>気になる</option>
+            <option>応募予定</option>
+            <option>応募済み</option>
+            <option>選考中</option>
+            <option>結果待ち</option>
+            <option>見送り</option>
+          </select>
+        </label>
+        <label class="wide">募集要項URL <input type="url" id="j-url" placeholder="https://..."></label>
+        <label class="wide">メモ <textarea id="j-memo" rows="2" placeholder="提出書類、模擬授業の有無など"></textarea></label>
+        <div class="form-actions wide">
+          <button type="submit" id="j-submit">追加する</button>
+          <button type="button" id="j-cancel" class="secondary" hidden>編集をやめる</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="list-head">
+        <h2>4. 募集一覧</h2>
+        <span id="count" class="count"></span>
+      </div>
+      <div id="job-list" class="job-list"></div>
+      <div class="data-actions">
+        <button type="button" id="export" class="secondary">JSONで書き出す</button>
+        <label class="file-button secondary">JSONを読み込む
+          <input type="file" id="import" accept="application/json" hidden>
+        </label>
+      </div>
+      <p class="note">記録はこのブラウザ内（localStorage）だけに保存されます。別の端末に移すときは書き出し・読み込みを使ってください。</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
